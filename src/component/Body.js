@@ -3,6 +3,7 @@ import resList from '../utils/mockData';
 import { useEffect, useState } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
+import useOnlinestatus from '../utils/customHook/useOnlinestatus';
 
 const Body = () => {
   const [listOfRestaurent, setListOfRestaurent] = useState(resList);
@@ -12,22 +13,27 @@ const Body = () => {
   //   const [listOfRestaurent, setListOfRestaurent] = arr;
   //it is actually a array desturncturing
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5412712&lng=88.3875827&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
-    );
-    const dataJson = await data.json();
-    // console.log(dataJson.data);
-    // setListOfRestaurent(dataJson.data.cards);
-  };
+  // const fetchData = async () => {
+  //   const data = await fetch(
+  //     'https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5412712&lng=88.3875827&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
+  //   );
+  //   const dataJson = await data.json();
+  //   // console.log(dataJson.data);
+  //   // setListOfRestaurent(dataJson.data.cards);
+  // };
 
   // if (listOfRestaurent.length === 0) {
   //   return <Shimmer />;
   // }
+
+  //custom hook use--
+  const onlineStatus = useOnlinestatus();
+  if (onlineStatus === false)
+    return <h1>Looks like you're offline!!! Please check your internet...</h1>;
 
   //COnditional Rendering
   return listOfRestaurent.length === 0 ? (
