@@ -44,11 +44,11 @@ class UserClass extends React.Component {
     const { name, location, id, avatar_url } = this.state.userInfo;
     // debugger;
     return (
-      <div className="userCard">
-        <img src={avatar_url} className="userIMG" />
-        <h2>Name: {name}</h2>
-        <h2>Loaction: {location}</h2>
-        <h2>Id: {id}</h2>
+      <div className="m-4 p-4 rounder-lg bg-yellow-50 w-[250] border shadow-md">
+        <img src={avatar_url} className="w-[150] rounder-xl shadow-2xl m-3" />
+        <h1 className="font-bold">Name: {name}</h1>
+        <h2 className="font-medium">Loaction: {location}</h2>
+        <h2 className="font-medium">Id: {id}</h2>
       </div>
     );
   }

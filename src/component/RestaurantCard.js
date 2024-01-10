@@ -1,8 +1,8 @@
 import { CDN_URL_CARD_LOGO } from '../utils/constant';
 
-const styleCard = {
-  backgroundColor: '#f0f0f0',
-};
+// const styleCard = {
+//   backgroundColor: '#f0f0f0',
+// };
 
 const RestaurantCard = (props) => {
   const { resData } = props;
@@ -10,13 +10,16 @@ const RestaurantCard = (props) => {
     resData.card.card.info;
   // console.log(resData.card);
   return (
-    <div className="res-card" style={styleCard}>
+    <div
+      className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200"
+      // style={styleCard}
+    >
       <img
-        className="res-logo"
+        className="rounded-lg"
         alt="res-logo"
         src={CDN_URL_CARD_LOGO + cloudinaryImageId}
       />
-      <h3>{name}</h3>
+      <h3 className="font-bold py-4 text-lg">{name}</h3>
       <h4>{cuisines.join(', ')}</h4>
       <h4>{avgRating} star</h4>
       <h4>{costForTwo}</h4>

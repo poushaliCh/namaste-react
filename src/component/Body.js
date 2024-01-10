@@ -40,18 +40,18 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="serach">
+      <div className="flex">
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="searchBox"
+            className="border borde-solid border-black focus:ring-2 focus:ring-blue-500"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="searchBoxBtn"
+            className="px-4 py-1 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               // console.log(searchText);
               const filteredRestaurent = listOfRestaurent.filter((res) =>
@@ -66,20 +66,22 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredListOfRestaurent = listOfRestaurent.filter(
-              (res) => res.card.card.info.avgRating > 4.5
-            );
-            console.log('filteredListOfRestaurent', filteredListOfRestaurent);
-            setFilteredRestaurent(filteredListOfRestaurent);
-          }}
-        >
-          Top Rated Restaurant
-        </button>
+        <div className="m-4 p-4">
+          <button
+            className="px-4 py-1 bg-blue-100 m-4 rounded-lg"
+            onClick={() => {
+              const filteredListOfRestaurent = listOfRestaurent.filter(
+                (res) => res.card.card.info.avgRating > 4.5
+              );
+              console.log('filteredListOfRestaurent', filteredListOfRestaurent);
+              setFilteredRestaurent(filteredListOfRestaurent);
+            }}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRestaurent.map((restaurant) => (
           <Link
             to={
